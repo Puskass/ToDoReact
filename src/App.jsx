@@ -1,10 +1,10 @@
-
+import TodoList from "./components/TodoList"
 
 function App() {
 
   return (
-    <div className="bg-gray-500">
-      SUper STRA
+    <div>
+      <TodoList />
     </div>
   )
 }
