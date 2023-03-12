@@ -1,10 +1,40 @@
 import React from 'react'
 
-const Todo = () => {
+const Todo = ({ text, todo, todos, setTodos }) => {
+  //Events
+  const deleteHandler = () => {
+     setTodos(todos.filter((el) => el.key !== todo.key)); 
+  };
+
+  const completeHandler = () => {
+    setTodos(todos.map((item) => {
+      if(item.id === todo.id){
+        return {
+          ...item, completed: !item.completed
+        }
+      }
+      return item;
+    }));
+  };
+
   return (
-    <ul className='flex flex-col items-start text-white bg-purple-114 py-4 mt-4 cursor-pointer'>
-      <li className='bg-purple-875 w-full px-3 py-2 mb-4 rounded-md'>GO FUCK off</li>
-    </ul>
+    <div className='flex py-2'>
+
+      <li className='bg-purple-875 rounded-md py-2 px-4'>
+        {text}
+      </li>
+      
+      <button onClick={completeHandler}
+      className= 'bg-green-600 p-2 ml-3 rounded-md'>
+        <i className='fas fa-check'></i>
+      </button>
+      
+      <button onClick={deleteHandler}
+      className='bg-red-600 p-2 ml-3 rounded-md'>
+        <i className='fas fa-trash'></i>
+      </button>
+
+      </div>
   )
 }
 
