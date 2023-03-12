@@ -3,7 +3,7 @@ import React from 'react'
 const Todo = ({ text, todo, todos, setTodos }) => {
   //Events
   const deleteHandler = () => {
-     setTodos(todos.filter((el) => el.key !== todo.key)); 
+     setTodos(todos.filter((el) => el.id !== todo.id)); 
   };
 
   const completeHandler = () => {
@@ -16,11 +16,13 @@ const Todo = ({ text, todo, todos, setTodos }) => {
       return item;
     }));
   };
-
+  
   return (
     <div className='flex py-2'>
 
-      <li className='bg-purple-875 rounded-md py-2 px-4'>
+      <li 
+      className={`bg-purple-875 rounded-md py-2 px-4 
+      ${todo.completed ? "line-through opacity-70" : ""}`}>
         {text}
       </li>
       
